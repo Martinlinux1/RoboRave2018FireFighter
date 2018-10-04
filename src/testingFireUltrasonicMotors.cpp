@@ -18,7 +18,7 @@ int currSpeed = baseSpeed;
 
 float distanceCm(int sensor);
 int isWall(short *sensor);
-bool isFire(short *sensor);
+bool isFire(short *fireSensor);
 
 void setup() {
   for (unsigned int i = 0; i < arrLen(trigPins); i++) {
@@ -35,7 +35,7 @@ void setup() {
 void loop() {
   short USSensor = -1, fireSensor = -1;
 
-  isFire(fireSensor);
+  isFire(&fireSensor);
 
   if (isWall(&USSensor) == SLOW_DOWN) {
     currSpeed = baseSpeed - 30;
@@ -58,7 +58,7 @@ void loop() {
     }
   }
 
-  else if (isFire(fireSensor)) {
+  else if (isFire(&fireSensor)) {
     if (fireSensor == 4) {
       Serial.println("forward");
       motors.forward(baseSpeed, baseSpeed);
@@ -95,18 +95,34 @@ float distanceCm(int sensor) {
 }
 
 int isWall(short *sensor) {
-  for (short i = 0; i < 5; i++) {
-    if (distanceCm(i) < 10) {
-      *sensor = i;
+  if (distanceCm(0) < 10) {
+    *sensor = 0;
+    return TURN;
+  }
 
-      return TURN;
-    }
+  else if (distanceCm(1) < 10) {
+    *sensor = 1;
+    return TURN;
+  }
 
-    else if (distanceCm(i)  < 15) {
-      *sensor = i;
+  else if (distanceCm(3) < 10) {
+    *sensor = 3;
+    return TURN;
+  }
 
-      return SLOW_DOWN;
-    }
+  if (distanceCm(0) < 15) {
+    *sensor = 0;
+    return SLOW_DOWN;
+  }
+
+  else if (distanceCm(1) < 15) {
+    *sensor = 1;
+    return SLOW_DOWN;
+  }
+
+  else if (distanceCm(3) < 15) {
+    *sensor = 3;
+    return SLOW_DOWN;
   }
 
   *sensor = -1;
