@@ -6,10 +6,6 @@
   log:
     v0.1 - made constructor and getFire function for returning current fire state
            from chosen sensor.
-    v0.2 - overloaded constructor for setup multiplexed fire sensors and created
-           function getAnalogFire, which reads multiplexed sensors.
-           Sensors multiplexed by: CD74HC4067,
-           datasheet: http://www.ti.com/lit/ds/symlink/cd74hc4067.pdf
 */
 
 /*========Preprocessor part begin.========*/

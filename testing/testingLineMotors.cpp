@@ -13,7 +13,7 @@ bool isLine(short *sensor);
 int baseSpeed = 150;
 
 void setup() {
-
+  Serial.begin(9600);
 }
 
 void loop() {
