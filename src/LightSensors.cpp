@@ -9,5 +9,5 @@ LightSensors::LightSensors(int *pins) {
 }
 
 bool LightSensors::getLight(int sensor) {
-  return digitalRead(sensor);
+  return digitalRead(LightSensors::sensorPins[sensor]);
 }
