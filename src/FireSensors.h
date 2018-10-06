@@ -20,10 +20,7 @@ class FireSensors {
 public:
   // Constructor.
   FireSensors(int *sensorsPins);
-
-  // Constructor for multiplexed sensors.
-  FireSensors(int *analogPins, int *signalPins);
-
+  
   // Get fire status on sensor in digital form.
   bool getFire(int pin);
 
