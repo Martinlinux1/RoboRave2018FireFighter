@@ -1,8 +1,8 @@
 #include "include.h"
 #include "UltrasonicSensors.h"
 
+int trigPins[5] = {29, 48, 49, 50, 33};
 int echoPins[5] = {47, 30, 31, 32, 51};
-int trigPins[5] = {29, 46, 49, 50, 33};
 
 UltrasonicSensors prox(trigPins, echoPins);
 
@@ -24,7 +24,7 @@ void setup() {
 void loop() {
   Serial.print("Ultrasonic sensors obj: ");
   for (int i = 0; i < 5; i++) {
-    Serial.println(prox.distanceCm(i));
+    Serial.println(distanceCm(i));
   }
 
   delay(500);

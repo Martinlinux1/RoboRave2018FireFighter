@@ -8,6 +8,6 @@ LightSensors::LightSensors(int *pins) {
   }
 }
 
-bool LightSensors::getLight(int sensor) {
-  return digitalRead(LightSensors::sensorPins[sensor]);
+int LightSensors::getLight(int sensor) {
+  return analogRead(LightSensors::sensorPins[sensor]);
 }

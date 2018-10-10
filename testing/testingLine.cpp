@@ -1,11 +1,11 @@
 #include "include.h"
 #include "LightSensors.h"
 
-int lightSensorsPins[8] = {13, 12, 11, 10, 9, 8, 7, 6};
+int lightSensorsPins[8] = {A0, A1, A2, A3, A4, A5, A6, A7};
 LightSensors lightSensors(lightSensorsPins);
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(4800);
 }
 
 void loop() {
@@ -13,11 +13,5 @@ void loop() {
   for (unsigned int i = 0; i < arrLen(lightSensorsPins); i++) {
     Serial.print("\t");
     Serial.print(lightSensors.getLight(i));
-  }
-
-  Serial.print("\nLight sensors dig:");
-  for (unsigned int i = 0; i < arrLen(lightSensorsPins); i++) {
-    Serial.print("\t");
-    Serial.print(digitalRead(lightSensorsPins[i]));
   }
 }

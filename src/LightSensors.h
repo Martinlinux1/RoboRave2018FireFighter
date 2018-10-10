@@ -3,7 +3,7 @@
 class LightSensors {
 public:
   LightSensors(int *pins);
-  bool getLight(int sensor);
+  int getLight(int sensor);
 private:
   int *sensorPins;
 };
