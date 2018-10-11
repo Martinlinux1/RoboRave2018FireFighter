@@ -3,13 +3,20 @@
 UltrasonicSensors::UltrasonicSensors(int *trigPins, int *echoPins) {
   UltrasonicSensors::trigPins = trigPins;
   UltrasonicSensors::echoPins = echoPins;
-  
-  for (unsigned int i = 0; i < arrLen(trigPins); i++) {
+
+  Serial.print("Trig: \t");
+  for (unsigned int i = 0; i < 5; i++) {
     pinMode(UltrasonicSensors::trigPins[i], OUTPUT);
+    Serial.print(trigPins[i]);
+    Serial.print("\t");
   }
 
-  for (unsigned int i = 0; i < arrLen(echoPins); i++) {
+  Serial.print("\nEcho: \t");
+
+  for (unsigned int i = 0; i < 5; i++) {
     pinMode(UltrasonicSensors::echoPins[i], INPUT);
+    Serial.print(echoPins[i]);
+    Serial.print("\t");
   }
 }
 

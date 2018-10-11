@@ -3,7 +3,7 @@
 Fan::Fan(short *fanPins) {
   Fan::fanPins = fanPins;
 
-  for (unsigned int i = 0; i < arrLen(fanPins); i++) {
+  for (int i = 0; i < 2; i++) {
     pinMode(Fan::fanPins[i], OUTPUT);
   }
 }

@@ -2,7 +2,6 @@
 
 FireSensors::FireSensors(int *sensorsPins) {
   FireSensors::fireSensorsPins = sensorsPins;
-  FireSensors::multiplex = false;
 }
 
 

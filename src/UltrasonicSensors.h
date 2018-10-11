@@ -15,8 +15,7 @@ public:
   UltrasonicSensors(int *trigPins, int *echoPins);
   float distanceCm(int sensor);
   float distanceInch(int sensor);
+private:
   int *trigPins;
   int *echoPins;
-private:
-
 };

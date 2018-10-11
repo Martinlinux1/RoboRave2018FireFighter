@@ -10,13 +10,6 @@ float distanceCm(int sensor);
 
 
 void setup() {
-  for (unsigned int i = 0; i < arrLen(trigPins); i++) {
-    pinMode(trigPins[i], OUTPUT);
-  }
-
-  for (unsigned int i = 0; i < arrLen(echoPins); i++) {
-    pinMode(echoPins[i], INPUT);
-  }
   Serial.begin(9600);
 }
 
@@ -24,7 +17,7 @@ void setup() {
 void loop() {
   Serial.print("Ultrasonic sensors obj: ");
   for (int i = 0; i < 5; i++) {
-    Serial.println(distanceCm(i));
+    Serial.println(prox.distanceCm(i));
   }
 
   delay(500);

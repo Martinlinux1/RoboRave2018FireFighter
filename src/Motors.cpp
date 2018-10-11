@@ -12,7 +12,7 @@ Motors::Motors(int pins[4], int maxSpeed) {
   Motors::motorPins = pins;
   Motors::maxSpeed = maxSpeed;
 
-  for (unsigned int i = 0; i < arrLen(Motors::motorPins); i++) {
+  for (unsigned int i = 0; i < 4; i++) {
     pinMode(Motors::motorPins[i], OUTPUT);
   }
 }
