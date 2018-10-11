@@ -40,7 +40,7 @@ void loop() {
 }
 
 bool isFire(int *fireSensor) {
-  for (unsigned int i = 0; i < arrLen(fireSensorsPins); i++) {
+  for (unsigned int i = 0; i < 9; i++) {
     if (fireSensors.getFire(i) == 0) {
       *fireSensor = i;
       return true;
