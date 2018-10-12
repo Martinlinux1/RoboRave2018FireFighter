@@ -1,3 +1,7 @@
+/**
+  * Works.
+*/
+
 #include "include.h"
 #include "FireSensors.h"
 
@@ -12,9 +16,10 @@ void setup() {
 void loop() {
   Serial.print("Fire sensors: ");
 
-  for (int i = 0; i < arrLen(fireSensorsPins); i++) {
+  for (int i = 0; i < 9; i++) {
     Serial.print(fireSensors.getFire(i));
     Serial.print("\t");
   }
   Serial.print("\n");
+  delay(100);
 }

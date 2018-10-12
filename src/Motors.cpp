@@ -48,18 +48,6 @@ void Motors::moveTank(int speedA, int speedB) {
       analogWrite(Motors::motorPins[3], LOW);
     }
   }
-
-  else {
-    analogWrite(Motors::motorPins[0], HIGH);
-    analogWrite(Motors::motorPins[1], HIGH);
-    analogWrite(Motors::motorPins[2], HIGH);
-    analogWrite(Motors::motorPins[3], HIGH);
-    delay(10);
-    analogWrite(Motors::motorPins[0], LOW);
-    analogWrite(Motors::motorPins[1], LOW);
-    analogWrite(Motors::motorPins[2], LOW);
-    analogWrite(Motors::motorPins[3], LOW);
-  }
 }
 
 // Move forward.
@@ -70,6 +58,19 @@ void Motors::forward(int speedA, int speedB) {
 // Move backward.
 void Motors::back(int speedA, int speedB) {
   moveTank(-speedA, -speedB);
+}
+
+
+void Motors::stop() {
+  analogWrite(Motors::motorPins[0], HIGH);
+  analogWrite(Motors::motorPins[1], HIGH);
+  analogWrite(Motors::motorPins[2], HIGH);
+  analogWrite(Motors::motorPins[3], HIGH);
+  delay(10);
+  analogWrite(Motors::motorPins[0], LOW);
+  analogWrite(Motors::motorPins[1], LOW);
+  analogWrite(Motors::motorPins[2], LOW);
+  analogWrite(Motors::motorPins[3], LOW);
 }
 
 /*========Function definition end.========*/

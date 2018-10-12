@@ -35,6 +35,8 @@ public:
   // Move forward / backward.
   void moveTank(int speedA, int speedB);
 
+  void stop();
+
 /*========Public members definition end.========*/
 
 /*========Private members definition begin.========*/
