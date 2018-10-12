@@ -55,6 +55,7 @@ void readUltrasonic() {
   int ultrasonicSensor, fireSensor;
 
   if (isWall(&ultrasonicSensor) && ultrasonicSensor == 0 && isFire(&fireSensor) && fireSensor == 4) {
+    Serial.println("Blowing candle.");
     motors.stop();
     fan.turnFan(true, 0);
     delay(2000);
@@ -65,14 +66,14 @@ void readUltrasonic() {
 
   else if (isWall(&ultrasonicSensor) == SLOW_DOWN) {
     int currSpeed = baseSpeed - 30;
-    Serial.println("Slowing down");
+    Serial.println("Slowing down.");
     motors.forward(currSpeed, currSpeed);
 
     return;
   }
 
   else if (isWall(&ultrasonicSensor) == TURN) {
-    Serial.println("Turning");
+    Serial.println("Turning.");
 
     if (ultrasonicSensor == 0) {
       motors.moveTank(baseSpeed, -baseSpeed);
@@ -100,12 +101,11 @@ void readFireSensors() {
 
   if (isFire(&fireSensor)) {
     if (fireSensor == 4) {
-      Serial.println("forward");
-      motors.forward(baseSpeed, baseSpeed);
+      fire = false;
     }
 
     else if (fireSensor < 4) {
-      Serial.println("right");
+      Serial.println("Going right.");
 
       while (fireSensor != 4) {
         motors.forward(baseSpeed + 50, 0);
@@ -114,7 +114,7 @@ void readFireSensors() {
       }
     }
     else if (fireSensor > 4) {
-      Serial.println("left");
+      Serial.println("Going left.");
 
       while (fireSensor != 4) {
         motors.forward(0, baseSpeed + 50);
@@ -132,6 +132,7 @@ void readFireSensors() {
 
 void checkEverything() {
   if (!wall && !fire) {
+    Serial.println("Going forward.");
     motors.forward(baseSpeed, baseSpeed);
   }
 }
@@ -151,12 +152,6 @@ void checkEverything() {
 
 
 int isWall(short *ultrasonicSensor) {
-  for (int i = 0; i < 5; i++) {
-    Serial.print(prox.distanceCm(i));
-    Serial.print("\t");
-  }
-  Serial.print("\n");
-
   if (prox.distanceCm(0) < 10) {
     *ultrasonicSensor = 0;
     return TURN;
