@@ -2,6 +2,10 @@
 
 FireSensors::FireSensors(int *sensorsPins) {
   FireSensors::fireSensorsPins = sensorsPins;
+
+  for (int i = 0; i < 8; i++) {
+    pinMode(FireSensors::fireSensorsPins[i], INPUT);
+  }
 }
 
 

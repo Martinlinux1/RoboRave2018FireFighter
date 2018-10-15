@@ -2,7 +2,7 @@
 
 class Fan {
 private:
-  short *fanPins;
+  int *fanPins;
 public:
   Fan(short *fanPins);
   void turnFan(bool on, short sensor);

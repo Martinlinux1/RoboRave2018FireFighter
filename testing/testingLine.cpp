@@ -2,7 +2,7 @@
 #include "LightSensors.h"
 
 // #TODO Sensor 6 is maybe disconnected, sensor 1 & 4 isn't connected.
-int lightSensorsPins[8] = {13, 12, 11, 10, 9, 8, 7, 6};
+int lightSensorsPins[8] = {13, 10, 12, 11, 9, 6, 7, 8};
 LightSensors lightSensors(lightSensorsPins);
 
 void setup() {
