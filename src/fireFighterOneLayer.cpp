@@ -47,6 +47,7 @@ void setup() {
 
 void loop() {
   readWall.check();
+  readLine.check();
   readFire.check();
   forward.check();
 }
@@ -56,7 +57,8 @@ void readUltrasonic() {
   wall = true;
   int ultrasonicSensor, lightSensor, fireSensor;
 
-  if (prox.distanceCm(0) < 20 && isFire(&fireSensor) && fireSensor == 4) {
+  if (prox.distanceCm(0) < 20 && isLine(&lightSensor) && (lightSensor == 0 || lightSensor == 1 || lightSensor == 7)
+      && isFire(&fireSensor) && fireSensor == 4) {
     Serial.println("Blowing candle.");
     motors.stop();
     digitalWrite(fanPin, HIGH);
