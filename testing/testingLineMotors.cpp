@@ -3,12 +3,12 @@
 #include "LightSensors.h"
 
 int motorPins[4] = {2, 3, 4, 5};
-int lightSensorsPins[8] = {13, 12, 11, 10, 9, 8, 7, 6};
+int lightSensorsPins[8] = {13, 10, 12, 11, 9, 6, 7, 8};
 
 Motors motors(motorPins, 255);
 LightSensors lightSensors(lightSensorsPins);
 
-bool isLine(short *sensor);
+bool isLine(int *sensor);
 
 int baseSpeed = 150;
 
@@ -17,14 +17,29 @@ void setup() {
 }
 
 void loop() {
-  short lightSensor;
+  int lightSensor;
+
   if (isLine(&lightSensor)) {
+    Serial.print("Line detected");
+
     if (lightSensor == 0 || lightSensor == 1) {
-      motors.moveTank(baseSpeed, -baseSpeed);
+      Serial.println(", going right.");
+
+      motors.back(baseSpeed, baseSpeed);
+      delay(500);
+      motors.moveTank(-baseSpeed, baseSpeed);
+      delay(500);
+      motors.stop();
     }
 
-    else if (lightSensor == 2 || lightSensor == 3) {
+    else if (lightSensor == 7) {
+      Serial.println(", going left.");
+
+      motors.back(baseSpeed, baseSpeed);
+      delay(500);
       motors.moveTank(-baseSpeed, baseSpeed);
+      delay(500);
+      motors.stop();
     }
   }
 
@@ -33,9 +48,9 @@ void loop() {
   }
 }
 
-bool isLine(short *sensor) {
-  for (unsigned int i = 0; i < arrLen(lightSensorsPins); i++) {
-    if (lightSensors.getLight(i) == 0) {
+bool isLine(int *sensor) {
+  for (unsigned int i = 0; i < 8; i++) {
+    if (lightSensors.getLight(i) == 1) {
       *sensor = i;
       return true;
     }

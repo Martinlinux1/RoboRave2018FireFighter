@@ -1,12 +1,18 @@
 #include "include.h"
 
+Servo servo;
+
+
 void setup() {
-  pinMode(A8, OUTPUT);
+  pinMode(45, OUTPUT);
+  servo.attach(11);
+
 }
 
 void loop() {
-  digitalWrite(A8, HIGH);
-  delay(1000);
-  digitalWrite(A8, LOW);
-  delay(1000);
+  servo.write(180);
+  digitalWrite(45, HIGH);
+  delay(500);
+  servo.write(135);
+  delay(500);
 }

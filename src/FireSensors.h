@@ -19,16 +19,18 @@
 class FireSensors {
 public:
   // Constructor.
-  FireSensors(int *sensorsPins);
+  FireSensors(int *sensorsPins, int *multiplexPins);
 
   // Get fire status on sensor in digital form.
   bool getFire(int pin);
 
   // Get fire status on multiplexed sensor in analog form.
-  int getAnalogFire(int pin);
+  void resetSensors(int row);
 private:
   // Pins of sensors.
   int *fireSensorsPins;
+
+  int *multiplexPins;
 };
 
 /*========Class definition end.========*/
